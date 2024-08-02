@@ -136,13 +136,21 @@
             height: 400px; /* Adjust height as needed */
             border: 0;
         }
-        footer {
-            background-color: #282c34;
-            color: #fff;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #333; /* Dark grey */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         /* Hidden until the images are fully loaded */
         .loading .carousel {
@@ -164,7 +172,8 @@
         <p>שלושה חדרים, שני חדרי שירותים, אמבטיה ומרפסת שירות. הדירה ממוקמת בקומה ראשונה ומציעה נוחות מרבית במיקום מרכזי, ליד גינה, גני ילדים, דואר ומרכז מסחרי.</p>
         <p>הדירה קרובה לתחבורה ציבורית, וללא תיווך. המחיר גמיש!</p>
         <div class="carousel">
-            <img src="https://i.postimg.cc/XvJ7Yj16/photo-2024-08-02-14-25-42.jpg" alt="תמונה 1" class="active">
+            <div class="loader"></div>
+			       <img src="https://i.postimg.cc/XvJ7Yj16/photo-2024-08-02-14-25-42.jpg" alt="תמונה 1" class="active">
             <img src="https://i.postimg.cc/9Q1Q2RpB/photo-2024-08-02-14-25-38.jpg" alt="תמונה 2">
             <img src="https://i.postimg.cc/pLPL3YDT/photo-2024-08-02-14-25-46.jpg" alt="תמונה 3">
             <a class="nav left" onclick="prevSlide()">&#10094;</a>
@@ -180,6 +189,7 @@
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel img');
         const totalSlides = slides.length;
+        const loader = document.querySelector('.loader');
 
         function showSlide(index) {
             slides[currentSlide].classList.remove('active');
@@ -201,6 +211,7 @@
             carousel.addEventListener('load', () => {
                 document.body.classList.remove('loading');
                 document.body.classList.add('loaded');
+                loader.style.display = 'none'; // Hide loader after images are loaded
             }, true);
 
             // Initial slide
