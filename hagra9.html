@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דירה למכירה</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #282c34;
+            color: #fff;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .content {
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .content .bisd {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: #888;
+        }
+        .content h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .content p {
+            color: #666;
+            line-height: 1.6;
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            border-radius: 10px;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .carousel img.active {
+            display: block;
+            opacity: 1;
+        }
+        .carousel .nav {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+        }
+        .carousel .nav.left {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        .carousel .nav.right {
+            right: 10px;
+            transform: translateY(-50%);
+        }
+        .carousel .nav:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .btn {
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            margin: 20px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .btn:hover {
+            background-color: #555;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+        .whatsapp-btn:hover {
+            background-color: #1EBE54;
+        }
+        .map-container {
+            margin: 20px auto;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 400px; /* Adjust height as needed */
+            border: 0;
+        }
+        footer {
+            background-color: #282c34;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        /* Hidden until the images are fully loaded */
+        .loading .carousel {
+            opacity: 0;
+        }
+        .loaded .carousel {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="loading">
+    <header>
+        <h1>דירה למכירה</h1>
+    </header>
+    <div class="content">
+        <div class="bisd">בס"ד</div>
+        <h2>דירה יפה ומשופצת במיקום מצוין!</h2>
+        <p>למכירה דירה כ-70 מ"ר ברחוב הגר"א 9 בפתח תקווה.</p>
+        <p>שלושה חדרים, שני חדרי שירותים, אמבטיה ומרפסת שירות. הדירה ממוקמת בקומה ראשונה ומציעה נוחות מרבית במיקום מרכזי, ליד גינה, גני ילדים, דואר ומרכז מסחרי.</p>
+        <p>הדירה קרובה לתחבורה ציבורית, וללא תיווך. המחיר גמיש!</p>
+        <div class="carousel">
+            <img src="https://i.postimg.cc/XvJ7Yj16/photo-2024-08-02-14-25-42.jpg" alt="תמונה 1" class="active">
+            <img src="https://i.postimg.cc/9Q1Q2RpB/photo-2024-08-02-14-25-38.jpg" alt="תמונה 2">
+            <img src="https://i.postimg.cc/pLPL3YDT/photo-2024-08-02-14-25-46.jpg" alt="תמונה 3">
+            <a class="nav left" onclick="prevSlide()">&#10094;</a>
+            <a class="nav right" onclick="nextSlide()">&#10095;</a>
+        </div>
+        <a class="btn" href="tel:0507577665">ליצירת קשר: 050-7577665</a>
+        <a class="btn whatsapp-btn" href="https://api.whatsapp.com/send?phone=972507577665&text=%D7%96%D7%94%20%D7%91%D7%A7%D7%A9%D7%A8%20%D7%9C%D7%93%D7%99%D7%A8%D7%94%20%D7%94%D7%90%D7%9D%20%D7%96%D7%94%20%D7%A2%D7%93%D7%99%D7%99%D7%9F%20%D7%90%D7%A7%D7%98%D7%95%D7%90%D7%9C%D7%99%3F">שלח הודעה ב-WhatsApp</a>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3383.738120285567!2d34.8858777!3d32.0844795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d0e5c6fcb040b%3A0x234f6a41b84d6a2a!2sHaGra%20St%209%2C%20Petah%20Tikva!5e0!3m2!1siw!2sil!4v1691144142830!5m2!1siw!2sil&hl=he" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel img');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set body class to "loaded" after images are loaded
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('load', () => {
+                document.body.classList.remove('loading');
+                document.body.classList.add('loaded');
+            }, true);
+
+            // Initial slide
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>
